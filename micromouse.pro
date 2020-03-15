@@ -28,13 +28,20 @@ SOURCES += \
         mainwindow.cpp \
         boardgenerator.cpp \
     gboard.cpp \
-    board.cpp
+    board.cpp \
+    mouse.cpp \
+    gmouse.cpp
 
 HEADERS += \
         mainwindow.h \
     boardgenerator.h \
     gboard.h \
-    board.h
+    board.h \
+    mouse.h \
+    gmouse.h
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
