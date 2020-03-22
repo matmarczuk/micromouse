@@ -13,12 +13,12 @@ private:
     Sensor *sensor1;
 
 public:
-    Mouse();
+    Mouse(Sensor *sensor);
     void move();
 signals:
     void setNewPosition(Position pos);
 public slots:
-    void readSensor(float read);
+    void readSensor(bool walls[3]);
 };
 
 #endif // MOUSE_H

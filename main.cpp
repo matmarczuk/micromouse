@@ -7,6 +7,7 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include "mouse.h"
+#include "sensor.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +17,10 @@ int main(int argc, char *argv[])
     board->newBoard(16);
     GBoard * gboard = new GBoard(board);
 
-    Mouse *mouse = new Mouse();
+    Sensor* sensor = new Sensor();
+    sensor->setBoard(board->getBoard());
+
+    Mouse *mouse = new Mouse(sensor);
     GMouse *gmouse = new GMouse(mouse);
 
     MainWindow w(0, gboard, gmouse);
@@ -24,4 +28,10 @@ int main(int argc, char *argv[])
     w.show();
 
     return a.exec();
+
+    delete gmouse;
+    delete mouse;
+    delete sensor;
+    delete gboard;
+    delete board;
 }

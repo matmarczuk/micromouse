@@ -1,13 +1,16 @@
 #include "gmouse.h"
 #include <QImage>
-
+#include <QGraphicsPixmapItem>
+#include <iostream>
 GMouse::GMouse(Mouse *mouse)
 {
     this->mouse=mouse;
     QImage image(":/mouse.png");
     image = image.scaled(20,20,Qt::KeepAspectRatio);
     item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-    item->setPos(0,0);
+    item->setTransformOriginPoint(15,15);
+    dynamic_cast<QGraphicsPixmapItem*>(item)->setOffset(5,5);
+    //item->setRotation(90);
     QObject::connect(mouse, SIGNAL(setNewPosition(Position)), this, SLOT(setPos(Position)));
 }
 
@@ -19,6 +22,25 @@ void GMouse::draw(QGraphicsScene& scene)
 void GMouse::setPos(Position pos)
 {
     item->setPos(pos.x,pos.y);
-    item->setRotation(pos.direction);
-}
 
+    switch (pos.direction) {
+        case 0:
+            item->setRotation(90);
+            break;
+        case 1:
+            item->setRotation(180);
+            break;
+        case 2:
+            item->setRotation(270);
+            break;
+        case 3:
+            item->setRotation(0);
+            break;
+        default:
+            break;
+    }
+}
+GMouse::~GMouse()
+{
+    delete item;
+}

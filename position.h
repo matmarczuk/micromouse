@@ -3,8 +3,8 @@
 
 struct Position
 {
-  float x;
-  float y;
+  int x;
+  int y;
   int direction; //0 - W, 1 - N, 2- E, 3- S
 };
 
