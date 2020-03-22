@@ -27,18 +27,21 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         boardgenerator.cpp \
-    gboard.cpp \
-    board.cpp \
-    mouse.cpp \
-    gmouse.cpp
+        gboard.cpp \
+        board.cpp \
+        mouse.cpp \
+        gmouse.cpp \
+    sensor.cpp
 
 HEADERS += \
         mainwindow.h \
-    boardgenerator.h \
-    gboard.h \
-    board.h \
-    mouse.h \
-    gmouse.h
+        boardgenerator.h \
+        gboard.h \
+        board.h \
+        mouse.h \
+        gmouse.h \
+    sensor.h \
+    position.h
 
 FORMS += \
         mainwindow.ui

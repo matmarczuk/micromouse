@@ -22,5 +22,6 @@ int main(int argc, char *argv[])
     MainWindow w(0, gboard, gmouse);
 
     w.show();
+
     return a.exec();
 }

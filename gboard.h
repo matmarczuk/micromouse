@@ -10,7 +10,8 @@ public:
     GBoard();
     GBoard(Board * _board);
     void setBoard(Board *board);
-    void drawBoard(QGraphicsScene& scene);
+    void drawBoard(QGraphicsScene& scene);    
+
 };
 
 #endif // GBOARD_H
