@@ -1,14 +1,6 @@
 #ifndef BOARDGENERATOR_H
 #define BOARDGENERATOR_H
-
-struct Cell
-{
-    int pos_x;
-    int pos_y;
-    bool isVisited;
-    bool walls[4];
-    Cell(){for(int i = 0;i<4;i++) walls[i] = true; isVisited=false;}
-};
+#include "cell.h"
 
 class BoardGenerator
 {

@@ -4,6 +4,7 @@
 #include <QObject>
 #include "sensor.h"
 #include "position.h"
+#include "boardmap.h"
 
 class Mouse : public QObject
 {
@@ -11,6 +12,7 @@ class Mouse : public QObject
 private:
     Position position;
     Sensor *sensor1;
+    Boardmap * boardMap;
 
 public:
     Mouse(Sensor *sensor);
@@ -19,6 +21,8 @@ signals:
     void setNewPosition(Position pos);
 public slots:
     void readSensor(bool walls[3]);
+private:
+    void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
 };
 
 #endif // MOUSE_H

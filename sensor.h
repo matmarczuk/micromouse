@@ -18,6 +18,8 @@ public:
 public slots:
     void measure();
     void updatePosition(Position pos);
+    void stopTimer();
+    void startTimer();
 signals:
     void newMeasure(bool[3]);
 };

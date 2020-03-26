@@ -4,7 +4,7 @@
 Sensor::Sensor()
 {
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(measure()));
-    timer.start(100);
+    //timer.start(100);
 }
 void Sensor::measure()
 {
@@ -51,4 +51,13 @@ void Sensor::updatePosition(Position pos)
 void Sensor::setBoard(Cell **board)
 {
     this->board = board;
+}
+void Sensor::stopTimer()
+{
+    timer.stop();
+}
+
+void Sensor::startTimer()
+{
+    timer.start(100);
 }

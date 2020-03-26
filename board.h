@@ -1,6 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "boardgenerator.h"
+#include "cell.h"
 
 class Board
 {

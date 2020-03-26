@@ -12,18 +12,17 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
     Board * board = new Board();
     board->newBoard(16);
     GBoard * gboard = new GBoard(board);
-
     Sensor* sensor = new Sensor();
+    GSensor * gsensor = new GSensor(sensor);
     sensor->setBoard(board->getBoard());
 
     Mouse *mouse = new Mouse(sensor);
     GMouse *gmouse = new GMouse(mouse);
 
-    MainWindow w(0, gboard, gmouse);
+    MainWindow w(0, gboard, gmouse, gsensor);
 
     w.show();
 

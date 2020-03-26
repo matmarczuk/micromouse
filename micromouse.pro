@@ -31,7 +31,10 @@ SOURCES += \
         board.cpp \
         mouse.cpp \
         gmouse.cpp \
-    sensor.cpp
+    sensor.cpp \
+    boardmap.cpp \
+    cell.cpp \
+    gsensor.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +44,10 @@ HEADERS += \
         mouse.h \
         gmouse.h \
     sensor.h \
-    position.h
+    position.h \
+    boardmap.h \
+    cell.h \
+    gsensor.h
 
 FORMS += \
         mainwindow.ui
