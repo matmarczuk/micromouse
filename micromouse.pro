@@ -34,7 +34,10 @@ SOURCES += \
     sensor.cpp \
     boardmap.cpp \
     cell.cpp \
-    gsensor.cpp
+    gsensor.cpp \
+    startdialog.cpp \
+    newboarddialog.cpp \
+    micromouse.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,10 +50,15 @@ HEADERS += \
     position.h \
     boardmap.h \
     cell.h \
-    gsensor.h
+    gsensor.h \
+    startdialog.h \
+    newboarddialog.h \
+    micromouse.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    startdialog.ui \
+    newboarddialog.ui
 
 RESOURCES += \
     resources.qrc

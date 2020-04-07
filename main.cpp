@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "startdialog.h"
+#include "newboarddialog.h"
 #include <QApplication>
 #include <QPainter>
 #include "boardgenerator.h"
@@ -9,28 +11,32 @@
 #include "mouse.h"
 #include "sensor.h"
 
+#include "micromouse.h"
+
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
-    Board * board = new Board();
-    board->newBoard(16);
-    GBoard * gboard = new GBoard(board);
-    Sensor* sensor = new Sensor();
-    GSensor * gsensor = new GSensor(sensor);
-    sensor->setBoard(board->getBoard());
 
-    Mouse *mouse = new Mouse(sensor);
-    GMouse *gmouse = new GMouse(mouse);
 
-    MainWindow w(0, gboard, gmouse, gsensor);
+    Micromouse micromouse;
 
-    w.show();
+//    Board * board = new Board();
+//    GBoard * gboard = new GBoard(board);
+
+//    Sensor* sensor = new Sensor();
+//    GSensor * gsensor = new GSensor(sensor);
+//    sensor->setBoard(board->getBoard());
+
+
+//    Mouse *mouse = new Mouse(sensor);
+//    GMouse *gmouse = new GMouse(mouse);
 
     return a.exec();
 
-    delete gmouse;
-    delete mouse;
-    delete sensor;
-    delete gboard;
-    delete board;
+//    delete gmouse;
+//    delete mouse;
+//    delete sensor;
+//    delete gboard;
+//    delete board;
 }
