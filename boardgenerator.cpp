@@ -9,7 +9,7 @@ BoardGenerator::BoardGenerator()
 {
 
 }
-Cell** BoardGenerator::generate(int size)
+void BoardGenerator::generateNewBoard(int size)
 {
 //    std::unique_ptr<std::unique_ptr<Cell[]>[]> cellBoard;
 //    cellBoard = std::make_unique<std::unique_ptr<Cell[]>[] >(size);
@@ -125,5 +125,5 @@ Cell** BoardGenerator::generate(int size)
         stack.push_back(cellBoard[x_index][y_index]);
     }
 
-    return cellBoard;
+    emit setNewBoard(cellBoard, size);
 }

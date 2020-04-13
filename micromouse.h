@@ -15,8 +15,9 @@ class Micromouse
 {
     StartDialog startDialog;
     NewBoardDialog newBoardDialog;
-    LoadBoardDialog loadBoardDialog;
+    LoadBoardDialog* loadBoardDialog;
 
+    BoardGenerator *boardGenerator;
     Board *board;
     Sensor *sensor;
     Mouse *mouse;
