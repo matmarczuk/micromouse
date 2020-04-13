@@ -20,6 +20,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0, GBoard * gboard = 0, GMouse * gmouse = 0, GSensor * gsensor = 0);
     ~MainWindow();
+public slots:
+    void drawBoard();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene * scene;

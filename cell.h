@@ -8,7 +8,7 @@ struct Cell
     bool isVisited;
     bool walls[4];
     static int size;
-    Cell(){for(int i = 0;i<4;i++) walls[i] = true; isVisited=false;}
+    Cell(){for(int i = 0;i<4;i++) walls[i] = true; isVisited=false; }
 };
 
 #define CELL_SIZE Cell::size

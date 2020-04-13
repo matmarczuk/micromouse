@@ -13,8 +13,10 @@ private:
     Cell** board;
 public:
     Board();
-    Cell** getBoard();
+    Cell*** getBoard();
     int getSize();
+signals:
+    void updateBoard();
 public slots:
     void newBoard(int size);
 

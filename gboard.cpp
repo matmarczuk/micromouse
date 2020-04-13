@@ -18,7 +18,7 @@ GBoard::GBoard(Board * _board) : board(_board)
 
 void GBoard::drawBoard(QGraphicsScene& scene)
 {
-    Cell** tmp_board = board->getBoard();
+    Cell*** tmp_board = board->getBoard();
     int size = board->getSize();
     int high = 30;
     for(int i = 0; i < size; i++)
@@ -27,7 +27,7 @@ void GBoard::drawBoard(QGraphicsScene& scene)
         {
             for (int s = 0; s<4;s++)
             {
-                if(tmp_board[i][j].walls[s])
+                if((*tmp_board)[i][j].walls[s])
                 {   QGraphicsLineItem * line = new QGraphicsLineItem();
                     switch(s)
                     {

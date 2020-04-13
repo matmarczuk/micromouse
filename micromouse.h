@@ -13,13 +13,13 @@ class Micromouse
 {
     StartDialog startDialog;
     NewBoardDialog newBoardDialog;
-    MainWindow *mainWindow;
     Board *board;
     Sensor *sensor;
     Mouse *mouse;
     GBoard *gBoard;
     GSensor *gSensor;
     GMouse *gMouse;
+    MainWindow *mainWindow;
 
 public:
     Micromouse();

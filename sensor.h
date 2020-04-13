@@ -11,10 +11,10 @@ class Sensor : public QObject
     float value;
     QTimer timer;
     Position position;
-    Cell** board;
+    Cell*** board;
 public:
-    Sensor();
-    void setBoard(Cell** board);
+    Sensor(Cell*** _board);
+    void setBoard(Cell*** _board);
 public slots:
     void measure();
     void updatePosition(Position pos);
