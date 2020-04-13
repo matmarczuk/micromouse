@@ -32,6 +32,7 @@ Cell** BoardGenerator::generate(int size)
         }
     }
 
+    // put square cell 2x2 inside the board
     cellBoard[size/2][size/2].isVisited=true;
     cellBoard[size/2][size/2].walls[0]=false;
     cellBoard[size/2][size/2].walls[1]=false;

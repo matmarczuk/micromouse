@@ -19,6 +19,7 @@ signals:
     void updateBoard();
 public slots:
     void newBoard(int size);
+    void setNewBoard(Cell **board, int size);
 
 };
 
