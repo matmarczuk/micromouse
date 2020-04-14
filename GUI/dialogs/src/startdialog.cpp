@@ -1,4 +1,4 @@
-#include "startdialog.h"
+#include "GUI/dialogs/include/startdialog.h"
 #include "ui_startdialog.h"
 
 StartDialog::StartDialog(QWidget *parent) :

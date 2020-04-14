@@ -1,4 +1,4 @@
-#include "boardgenerator.h"
+#include "logic/Board/include/boardgenerator.h"
 #include <vector>
 #include <memory>
 #include <stdlib.h>

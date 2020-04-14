@@ -1,4 +1,4 @@
-#include "board.h"
+#include "logic/Board/include/board.h"
 #include <iostream>
 
 Board::Board()

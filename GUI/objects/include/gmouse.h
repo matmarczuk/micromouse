@@ -1,6 +1,6 @@
 #ifndef GMOUSE_H
 #define GMOUSE_H
-#include <mouse.h>
+#include "logic/Mouse/include/mouse.h"
 #include <QGraphicsScene>
 #include <QObject>
 

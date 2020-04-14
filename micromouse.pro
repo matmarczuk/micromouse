@@ -25,42 +25,42 @@ CONFIG += c++14
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-        boardgenerator.cpp \
-        gboard.cpp \
-        board.cpp \
-        mouse.cpp \
-        gmouse.cpp \
-    sensor.cpp \
-    boardmap.cpp \
-    cell.cpp \
-    gsensor.cpp \
-    startdialog.cpp \
-    newboarddialog.cpp \
-    micromouse.cpp \
-    loadboarddialog.cpp
+        GUI/dialogs/src/mainwindow.cpp \
+        logic/Board/src/boardgenerator.cpp \
+        GUI/objects/src/gboard.cpp \
+        logic/Board/src/board.cpp \
+        logic/Mouse/src/mouse.cpp \
+        GUI/objects/src/gmouse.cpp \
+    logic/Mouse/src/sensor.cpp \
+    logic/Mouse/src/boardmap.cpp \
+    logic/Board/src/cell.cpp \
+    GUI/objects/src/gsensor.cpp \
+    GUI/dialogs/src/startdialog.cpp \
+    GUI/dialogs/src/newboarddialog.cpp \
+    logic/micromouse.cpp \
+    logic/Board/src/fileboard.cpp
 
 HEADERS += \
-        mainwindow.h \
-        boardgenerator.h \
-        gboard.h \
-        board.h \
-        mouse.h \
-        gmouse.h \
-    sensor.h \
-    position.h \
-    boardmap.h \
-    cell.h \
-    gsensor.h \
-    startdialog.h \
-    newboarddialog.h \
-    micromouse.h \
-    loadboarddialog.h
+        GUI/dialogs/include/mainwindow.h \
+        logic/Board/include/boardgenerator.h \
+        GUI/objects/include/gboard.h \
+        logic/Board/include/board.h \
+        logic/Mouse/include/mouse.h \
+        GUI/objects/include/gmouse.h \
+    logic/Mouse/include/sensor.h \
+    logic/Mouse/include/position.h \
+    logic/Mouse/include/boardmap.h \
+    logic/Board/include/cell.h \
+    GUI/objects/include/gsensor.h \
+    GUI/dialogs/include/startdialog.h \
+    GUI/dialogs/include/newboarddialog.h \
+    logic/micromouse.h \
+    logic/Board/include/fileboard.h
 
 FORMS += \
-        mainwindow.ui \
-    startdialog.ui \
-    newboarddialog.ui
+        GUI/forms/mainwindow.ui \
+    GUI/forms/startdialog.ui \
+    GUI/forms/newboarddialog.ui
 
 RESOURCES += \
-    resources.qrc
+    GUI/resources/resources.qrc

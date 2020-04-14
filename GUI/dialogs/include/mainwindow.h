@@ -5,9 +5,9 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QGraphicsScene>
-#include "gboard.h"
-#include "gmouse.h"
-#include "gsensor.h"
+#include "GUI/objects/include/gboard.h"
+#include "GUI/objects/include/gmouse.h"
+#include "GUI/objects/include/gsensor.h"
 
 namespace Ui {
 class MainWindow;

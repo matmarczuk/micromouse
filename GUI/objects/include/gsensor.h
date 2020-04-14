@@ -1,6 +1,6 @@
 #ifndef GSENSOR_H
 #define GSENSOR_H
-#include "sensor.h"
+#include "logic/Mouse/include/sensor.h"
 
 class GSensor
 {

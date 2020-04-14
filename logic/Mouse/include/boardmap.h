@@ -1,6 +1,6 @@
 #ifndef BOARDMAP_H
 #define BOARDMAP_H
-#include "cell.h"
+#include "logic/Board/include/cell.h"
 #include "position.h"
 
 class Boardmap

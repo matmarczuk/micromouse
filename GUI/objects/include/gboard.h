@@ -1,6 +1,6 @@
 #ifndef GBOARD_H
 #define GBOARD_H
-#include <board.h>
+#include "logic/Board/include/board.h"
 #include <QGraphicsScene>
 
 class GBoard
