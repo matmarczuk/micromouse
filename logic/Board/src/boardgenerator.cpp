@@ -2,7 +2,6 @@
 #include <vector>
 #include <memory>
 #include <stdlib.h>
-#include <iostream>
 #include <ctime>
 
 BoardGenerator::BoardGenerator()
@@ -11,12 +10,6 @@ BoardGenerator::BoardGenerator()
 }
 void BoardGenerator::generateNewBoard(int size)
 {
-//    std::unique_ptr<std::unique_ptr<Cell[]>[]> cellBoard;
-//    cellBoard = std::make_unique<std::unique_ptr<Cell[]>[] >(size);
-//    for (int i = 0;i<size;i++)
-//    {
-//        cellBoard[i]=std::make_unique<Cell[]>(size);
-//    }
     srand( time( NULL ) );
     std::vector<Cell> stack;
     Cell** cellBoard = new Cell*[size];

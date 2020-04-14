@@ -1,5 +1,4 @@
-#include "sensor.h"
-#include <iostream>
+#include "logic/Mouse/include/sensor.h"
 
 Sensor::Sensor(Cell*** _board):board(_board)
 {
@@ -13,9 +12,6 @@ void Sensor::measure()
     int cell_pos_x = position.x/30;
     int cell_pos_y = position.y/30;
 
-//    std::cout<<"I am in cell "<<cell_pos_x<<" "<<cell_pos_y<<"walls"<< \
-//               board[cell_pos_x][cell_pos_y].walls[0]<< board[cell_pos_x][cell_pos_y].walls[1]<< \
-//                board[cell_pos_x][cell_pos_y].walls[2]<< board[cell_pos_x][cell_pos_y].walls[3]<<std::endl;
     bool walls[3];
     switch(position.direction)
     {

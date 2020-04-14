@@ -1,6 +1,5 @@
-#include "mouse.h"
-#include <iostream>
-#include "cell.h"
+#include "logic/Mouse/include/mouse.h"
+#include "logic/Board/include/cell.h"
 
 Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap)
 {
