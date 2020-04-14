@@ -37,7 +37,8 @@ SOURCES += \
     gsensor.cpp \
     startdialog.cpp \
     newboarddialog.cpp \
-    micromouse.cpp
+    micromouse.cpp \
+    loadboarddialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS += \
     gsensor.h \
     startdialog.h \
     newboarddialog.h \
-    micromouse.h
+    micromouse.h \
+    loadboarddialog.h
 
 FORMS += \
         mainwindow.ui \

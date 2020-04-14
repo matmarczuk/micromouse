@@ -2,6 +2,8 @@
 #define MICROMOUSE_H
 #include "startdialog.h"
 #include "newboarddialog.h"
+#include "loadboarddialog.h"
+
 #include "board.h"
 #include "mainwindow.h"
 #include "gboard.h"
@@ -13,6 +15,9 @@ class Micromouse
 {
     StartDialog startDialog;
     NewBoardDialog newBoardDialog;
+    LoadBoardDialog* loadBoardDialog;
+
+    BoardGenerator *boardGenerator;
     Board *board;
     Sensor *sensor;
     Mouse *mouse;

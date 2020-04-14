@@ -23,3 +23,9 @@ void StartDialog::on_newBoardButton_clicked()
     this->close();
     emit showNewBoardDialog();
 }
+
+void StartDialog::on_loadBoardButton_clicked()
+{
+    this->close();
+    emit showLoadBoardDialog();
+}

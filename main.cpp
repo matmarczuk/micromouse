@@ -10,15 +10,13 @@
 #include <QGraphicsView>
 #include "mouse.h"
 #include "sensor.h"
-
+#include "loadboarddialog.h"
 #include "micromouse.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-
-
     Micromouse micromouse;
 
 //    Board * board = new Board();

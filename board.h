@@ -9,7 +9,6 @@ class Board : public QObject
     Q_OBJECT
 private:
     int size;
-    BoardGenerator * board_generator;
     Cell** board;
 public:
     Board();
@@ -17,8 +16,10 @@ public:
     int getSize();
 signals:
     void updateBoard();
+    void sendBoardToSave(Cell **board, int size);
 public slots:
-    void newBoard(int size);
+    void setNewBoard(Cell **board, int size);
+    void saveBoardRequest();
 
 };
 

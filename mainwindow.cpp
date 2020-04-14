@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
 
     connect(ui->startButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
     connect(ui->stopButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(stopTimer()));
+    connect(ui->actionSave_board, SIGNAL(triggered(bool)),gboard->getBoard(), SLOT(saveBoardRequest()));
+
 }
 
 void MainWindow::drawBoard()
