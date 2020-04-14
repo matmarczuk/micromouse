@@ -1,6 +1,5 @@
-#include "newboarddialog.h"
+#include "GUI/dialogs/include/newboarddialog.h"
 #include "ui_newboarddialog.h"
-#include <QDebug>
 NewBoardDialog::NewBoardDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewBoardDialog)

@@ -1,4 +1,4 @@
-#include "gboard.h"
+#include "GUI/objects/include/gboard.h"
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
 

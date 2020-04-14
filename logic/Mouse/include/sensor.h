@@ -3,7 +3,7 @@
 
 #include <QTimer>
 #include "position.h"
-#include "board.h"
+#include "logic/Board/include/board.h"
 
 class Sensor : public QObject
 {

@@ -3,13 +3,13 @@
 
 #include <QObject>
 #include <QWidget>
-#include <cell.h>
+#include "logic/Board/include/cell.h"
 
-class LoadBoardDialog : public QWidget
+class FileBoard : public QWidget
 {
     Q_OBJECT
 public:
-    explicit LoadBoardDialog(QWidget *parent = nullptr);
+    explicit FileBoard(QWidget *parent = nullptr);
 
 signals:
     void setNewBoard(Cell **board, int size);

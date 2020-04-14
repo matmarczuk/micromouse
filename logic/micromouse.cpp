@@ -3,7 +3,7 @@
 Micromouse::Micromouse():
     startDialog(0),
     newBoardDialog(0),
-    loadBoardDialog(new LoadBoardDialog(0)),
+    loadBoardDialog(new FileBoard(0)),
     boardGenerator(new BoardGenerator()),
     board(new Board()),
     sensor(new Sensor(board->getBoard())),

@@ -1,4 +1,4 @@
-#include "boardmap.h"
+#include "logic/Mouse/include/boardmap.h"
 #include <iostream>
 
 Boardmap::Boardmap():visit_counter(0)

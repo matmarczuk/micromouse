@@ -1,9 +1,8 @@
-#include "mainwindow.h"
+#include "GUI/dialogs/include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
-#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSensor * gsensor) :
     QMainWindow(parent),

@@ -1,9 +1,7 @@
-#include "gsensor.h"
-#include <qdebug.h>
+#include "GUI/objects/include/gsensor.h"
 
 GSensor::GSensor(Sensor * _sensor):sensor(_sensor)
 {
-    qDebug("sensor initializer");
 }
 Sensor* GSensor::getSensorInst()
 {

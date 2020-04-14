@@ -1,18 +1,17 @@
-#include "loadboarddialog.h"
+#include "logic/Board/include/fileboard.h"
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonValue>
 
-LoadBoardDialog::LoadBoardDialog(QWidget *parent) : QWidget(parent)
+FileBoard::FileBoard(QWidget *parent) : QWidget(parent)
 {
 
 }
 
-void LoadBoardDialog::loadBoardFromFile()
+void FileBoard::loadBoardFromFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
           tr("Open Board file"), "",
@@ -68,7 +67,7 @@ void LoadBoardDialog::loadBoardFromFile()
 
 
 }
-void LoadBoardDialog::saveBoardToFile(Cell** board, int size)
+void FileBoard::saveBoardToFile(Cell** board, int size)
 {
     QString fileName = QFileDialog::getSaveFileName(this,
         tr("Save Board to file"), "",

@@ -1,6 +1,6 @@
 #ifndef NEWBOARDDIALOG_H
 #define NEWBOARDDIALOG_H
-#include "board.h"
+#include "logic/Board/include/board.h"
 
 #include <QDialog>
 

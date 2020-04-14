@@ -1,7 +1,6 @@
-#include "gmouse.h"
+#include "GUI/objects/include/gmouse.h"
 #include <QImage>
 #include <QGraphicsPixmapItem>
-#include <iostream>
 GMouse::GMouse(Mouse *mouse)
 {
     this->mouse=mouse;
