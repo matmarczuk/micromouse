@@ -22,3 +22,8 @@ void Board::setNewBoard(Cell **board, int size)
     this->size = size;
     emit updateBoard();
 }
+
+void Board::saveBoardRequest()
+{
+    emit sendBoardToSave(board,size);
+}

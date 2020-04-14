@@ -11,6 +11,7 @@ public:
     GBoard(Board * _board);
     void setBoard(Board *board);
     void drawBoard(QGraphicsScene& scene);    
+    Board* getBoard();
 };
 
 #endif // GBOARD_H

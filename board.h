@@ -16,8 +16,10 @@ public:
     int getSize();
 signals:
     void updateBoard();
+    void sendBoardToSave(Cell **board, int size);
 public slots:
     void setNewBoard(Cell **board, int size);
+    void saveBoardRequest();
 
 };
 

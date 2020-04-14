@@ -15,6 +15,7 @@ signals:
     void setNewBoard(Cell **board, int size);
 public slots:
     void loadBoardFromFile();
+    void saveBoardToFile(Cell** board, int size);
 };
 
 #endif // LOADBOARDDIALOG_H

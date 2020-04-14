@@ -38,32 +38,78 @@ void LoadBoardDialog::loadBoardFromFile()
         QJsonObject obj = json_doc.object();
 
         int size = obj.value(QString("size")).toInt();
-        QJsonArray cells = obj.value(QString("cells")).toArray();
-
-        for(int i = 0;i<size*size;i++)
-        {
-            QJsonValue cell = cells[i];
-            QJsonValue pos_x = cell.toObject().value("pos_x");
-            QJsonValue pos_y = cell.toObject().value("pos_y");
-            QJsonArray walls = cell.toObject().value("cells").toArray();
-        }
 
         Cell** cellBoard = new Cell*[size];
         for(int i = 0; i < size; ++i)
             cellBoard[i] = new Cell[size];
 
-        for(int i = 0;i<size;i++)
+        QJsonArray cells = obj.value(QString("cells")).toArray();
+
+        for(int i = 0;i<size*size;i++)
         {
-            for(int j = 0;j<size;j++)
+            QJsonValue cell = cells[i];
+            int pos_x = cell.toObject().value("pos_x").toInt();
+            int pos_y = cell.toObject().value("pos_y").toInt();
+            QJsonArray walls = cell.toObject().value("walls").toArray();
+            cellBoard[pos_x][pos_y].pos_x = pos_x;
+            cellBoard[pos_x][pos_y].pos_y = pos_y;
+            cellBoard[pos_x][pos_y].isVisited = true;
+
+            for(int w = 0;w<4;w++)
             {
-                cellBoard[i][j].pos_x = i;
-                cellBoard[i][j].pos_y = j;
-                cellBoard[i][j].walls[0] = false;
+                cellBoard[pos_x][pos_y].walls[w] = walls[w].toBool();
             }
         }
+
         emit setNewBoard(cellBoard, size);
 
 
+    }
+
+
+}
+void LoadBoardDialog::saveBoardToFile(Cell** board, int size)
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+        tr("Save Board to file"), "",
+        tr("JSON (*.json);;All Files (*)"));
+
+    if (fileName.isEmpty())
+        return;
+    else
+    {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            QMessageBox::information(this, tr("Unable to open file"),
+                file.errorString());
+            return;
+        }
+
+        QJsonObject raw;
+        raw["size"] = size;
+        QJsonArray cells;
+
+        for(int i = 0;i<size;i++)
+        {
+            for(int j =0;j<size;j++)
+            {
+                QJsonObject cell;
+                cell["pos_x"] = i;
+                cell["pos_y"] = j;
+                QJsonArray walls;
+                for(int w = 0;w<4;w++)
+                    walls.push_back(board[i][j].walls[w]);
+                cell["walls"] = walls;
+                cells.push_back(cell);
+            }
+        }
+        raw["cells"] = cells;
+
+        QJsonDocument doc;
+        doc.setObject(raw);
+        file.write(doc.toJson());
+        file.close();
     }
 
 

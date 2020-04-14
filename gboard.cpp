@@ -15,7 +15,10 @@ GBoard::GBoard(Board * _board) : board(_board)
 {
 
 }
-
+Board* GBoard::getBoard()
+{
+    return board;
+}
 void GBoard::drawBoard(QGraphicsScene& scene)
 {
     Cell*** tmp_board = board->getBoard();
