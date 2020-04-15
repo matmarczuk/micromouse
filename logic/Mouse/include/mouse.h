@@ -11,8 +11,9 @@ enum mouse_phase
     READY_FOR_SCANNING,
     SCANNING,
     GOING_BACK,
-    RIDE
-
+    READY_FOR_SOLVE,
+    RIDE,
+    REACHED_FINISH
 };
 class Mouse : public QObject
 {
@@ -30,6 +31,7 @@ public:
 signals:
     void setNewPosition(Position pos);
     void updateMouseState(QString state);
+    void stopSimulation();
 public slots:
     void readSensor(bool walls[3]);
     void init(int boardSize);
@@ -37,6 +39,7 @@ public slots:
 private:
     void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
     bool checkIfScanningCompleted();
+    bool checkIfMouseOnStart();
 };
 
 #endif // MOUSE_H

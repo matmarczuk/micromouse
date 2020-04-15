@@ -16,6 +16,7 @@ void Mouse::init(int boardSize)
     position.direction = 1;
     boardMap->init(boardSize);
     this->boardSize = boardSize;
+    this->phase = READY_FOR_SCANNING;
     emit updateMouseState("READY");
     emit setNewPosition(position);
 }
@@ -25,7 +26,6 @@ void Mouse::reset()
 }
 void Mouse::readSensor(bool walls[3])
 {
-    emit updateMouseState("SCANNING");
     bool board_wall[4];
     int x_cell = this->position.x/CELL_SIZE;
     int y_cell = this->position.y/CELL_SIZE;
@@ -96,16 +96,52 @@ void Mouse::readSensor(bool walls[3])
 
     emit setNewPosition(posi);
 
-    if(checkIfScanningCompleted())
+
+
+    switch(phase)
     {
-        std::cout<<"Scaning completed"<<std::endl;
-        emit updateMouseState("SCANNING COMPLETED");
+        case READY_FOR_SCANNING:
+        {
+            phase = SCANNING;
+            emit updateMouseState("SCANNING");
+            break;
+        }
+        case SCANNING:
+        {
+            if(checkIfScanningCompleted())
+            {
+                phase = GOING_BACK;
+                emit updateMouseState("SCANNING COMPLETED");
+             }
+            break;
+        }
+        case GOING_BACK:
+        {
+            if(checkIfMouseOnStart())
+            {
+                phase = READY_FOR_SOLVE;
+                emit updateMouseState("READY FOR SOLVE");
+                emit stopSimulation();
+            }
+            break;
+        }
+
+
     }
 }
 
 bool Mouse::checkIfScanningCompleted()
 {
     if(boardMap->getVisitCounter() > boardSize*boardSize -1)
+        return true;
+    return false;
+}
+bool Mouse::checkIfMouseOnStart()
+{
+    int x_cell = this->position.x/CELL_SIZE;
+    int y_cell = this->position.y/CELL_SIZE;
+
+    if(!x_cell && !y_cell)
         return true;
     return false;
 }
