@@ -3,13 +3,15 @@
 #include "logic/Mouse/include/mouse.h"
 #include <QGraphicsScene>
 #include <QObject>
+#include <QGraphicsItem>
 
 class GMouse : public QObject
 {
     Q_OBJECT
 private:
     Mouse * mouse;
-    QGraphicsItem* item;
+    QGraphicsItem *item;
+    QImage image;
 public:
     GMouse(Mouse *mouse);
     ~GMouse();

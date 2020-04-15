@@ -1,4 +1,6 @@
 #include "micromouse.h"
+#include <QAction>
+#include "ui_mainwindow.h"
 
 Micromouse::Micromouse():
     startDialog(0),
@@ -11,7 +13,7 @@ Micromouse::Micromouse():
     gBoard(new GBoard(board)),
     gSensor(new GSensor(sensor)),
     gMouse(new GMouse(mouse)),
-    mainWindow(new MainWindow(0, this->gBoard, gMouse, this->gSensor))
+    mainWindow(new MainWindow(0, this->gBoard, this->gMouse, this->gSensor))
 {
     startDialog.show();
     QObject::connect(&startDialog, SIGNAL(showNewBoardDialog()), &newBoardDialog, SLOT(showNewBoardDialog()));
@@ -21,5 +23,11 @@ Micromouse::Micromouse():
     QObject::connect(boardGenerator, SIGNAL(setNewBoard(Cell**,int)), board, SLOT(setNewBoard(Cell**,int)));
     QObject::connect(loadBoardDialog, SIGNAL(setNewBoard(Cell**,int)), board, SLOT(setNewBoard(Cell**,int)));
     QObject::connect(board, SIGNAL(sendBoardToSave(Cell**,int)), loadBoardDialog, SLOT(saveBoardToFile(Cell**,int)));
-    QObject::connect(board, SIGNAL(updateBoard()), mainWindow, SLOT(drawBoard()));
+    QObject::connect(board, SIGNAL(update()), mainWindow, SLOT(drawBoard()));
+    QObject::connect(board, SIGNAL(update()), mouse, SLOT(init()));
+
+
+    QObject::connect(mainWindow->getUi()->actionLoad_board, SIGNAL(triggered(bool)),loadBoardDialog, SLOT(loadBoardFromFile()));
+    QObject::connect(mainWindow->getUi()->actionGenerate_new_board, SIGNAL(triggered(bool)),&newBoardDialog, SLOT(showNewBoardDialog()));
+
 }

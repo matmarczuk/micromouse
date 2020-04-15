@@ -4,17 +4,16 @@
 GMouse::GMouse(Mouse *mouse)
 {
     this->mouse=mouse;
-    QImage image(":/mouse.png");
+    image = QImage(":/mouse.png");
     image = image.scaled(20,20,Qt::KeepAspectRatio);
-    item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-    item->setTransformOriginPoint(15,15);
-    dynamic_cast<QGraphicsPixmapItem*>(item)->setOffset(5,5);
-    //item->setRotation(90);
     QObject::connect(mouse, SIGNAL(setNewPosition(Position)), this, SLOT(setPos(Position)));
 }
 
 void GMouse::draw(QGraphicsScene& scene)
 {
+    item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    item->setTransformOriginPoint(15,15);
+    dynamic_cast<QGraphicsPixmapItem*>(item)->setOffset(5,5);
     scene.addItem(this->item);
 }
 

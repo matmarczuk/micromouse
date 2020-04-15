@@ -5,11 +5,15 @@ Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap)
 {
     QObject::connect(this->sensor1,&Sensor::newMeasure,this,&Mouse::readSensor);
     QObject::connect(this,&Mouse::setNewPosition,sensor1,&Sensor::updatePosition);
+    init();
+
+}
+void Mouse::init()
+{
     position.x = 0;
     position.y = 0;
     position.direction = 1;
     emit setNewPosition(position);
-
 }
 void Mouse::readSensor(bool walls[3])
 {

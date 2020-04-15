@@ -19,10 +19,17 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
     connect(ui->stopButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(stopTimer()));
     connect(ui->actionSave_board, SIGNAL(triggered(bool)),gboard->getBoard(), SLOT(saveBoardRequest()));
 
+
+}
+Ui::MainWindow* MainWindow::getUi()
+{
+    return ui;
 }
 
 void MainWindow::drawBoard()
 {
+    scene->clear();
+    scene->update();
     gboard->drawBoard(*scene);
     gmouse->draw(*scene);
     this->show();
@@ -32,4 +39,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete scene;
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    this->close();
 }

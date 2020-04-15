@@ -10,7 +10,6 @@
 #include "GUI/objects/include/gsensor.h"
 #include "GUI/objects/include/gmouse.h"
 
-
 class Micromouse
 {
     StartDialog startDialog;
