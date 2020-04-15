@@ -21,7 +21,7 @@ signals:
     void setNewPosition(Position pos);
 public slots:
     void readSensor(bool walls[3]);
-    void init();
+    void init(int boardSize);
 private:
     void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
 };

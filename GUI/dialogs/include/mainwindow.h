@@ -23,6 +23,7 @@ public:
     Ui::MainWindow* getUi();
 public slots:
     void drawBoard();
+    void updateState();
 private slots:
     void on_actionExit_triggered();
 

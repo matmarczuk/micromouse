@@ -23,8 +23,8 @@ Micromouse::Micromouse():
     QObject::connect(boardGenerator, SIGNAL(setNewBoard(Cell**,int)), board, SLOT(setNewBoard(Cell**,int)));
     QObject::connect(loadBoardDialog, SIGNAL(setNewBoard(Cell**,int)), board, SLOT(setNewBoard(Cell**,int)));
     QObject::connect(board, SIGNAL(sendBoardToSave(Cell**,int)), loadBoardDialog, SLOT(saveBoardToFile(Cell**,int)));
-    QObject::connect(board, SIGNAL(update()), mainWindow, SLOT(drawBoard()));
-    QObject::connect(board, SIGNAL(update()), mouse, SLOT(init()));
+    QObject::connect(board, SIGNAL(initBoard()), mainWindow, SLOT(drawBoard()));
+    QObject::connect(board, SIGNAL(initMouse(int)), mouse, SLOT(init(int)));
 
 
     QObject::connect(mainWindow->getUi()->actionLoad_board, SIGNAL(triggered(bool)),loadBoardDialog, SLOT(loadBoardFromFile()));

@@ -30,7 +30,8 @@ void Board::setNewBoard(Cell **board, int size)
 
     this->board = board;
     this->size = size;
-    emit update();
+    emit initBoard();
+    emit initMouse(size);
 }
 
 void Board::saveBoardRequest()

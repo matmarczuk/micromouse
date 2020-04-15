@@ -15,7 +15,8 @@ public:
     Cell*** getBoard();
     int getSize();
 signals:
-    void update();
+    void initBoard();
+    void initMouse(int);
     void sendBoardToSave(Cell **board, int size);
 public slots:
     void setNewBoard(Cell **board, int size);

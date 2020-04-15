@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
 {
     scene = new QGraphicsScene();
     ui->setupUi(this);
+    ui->state_label->setText("READY");
     ui->boardView->setScene(scene);
 
     connect(ui->startButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
