@@ -1,7 +1,8 @@
 #include "logic/Mouse/include/mouse.h"
 #include "logic/Board/include/cell.h"
+#include <iostream>
 
-Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap)
+Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap), phase(READY_FOR_SCANNING)
 {
     QObject::connect(this->sensor1,&Sensor::newMeasure,this,&Mouse::readSensor);
     QObject::connect(this,&Mouse::setNewPosition,sensor1,&Sensor::updatePosition);
@@ -14,10 +15,13 @@ void Mouse::init(int boardSize)
     position.y = 0;
     position.direction = 1;
     boardMap->init(boardSize);
+    this->boardSize = boardSize;
+    emit updateMouseState("READY");
     emit setNewPosition(position);
 }
 void Mouse::readSensor(bool walls[3])
 {
+    emit updateMouseState("SCANNING");
     bool board_wall[4];
     int x_cell = this->position.x/CELL_SIZE;
     int y_cell = this->position.y/CELL_SIZE;
@@ -87,6 +91,19 @@ void Mouse::readSensor(bool walls[3])
         posi.direction = this->position.direction;
 
     emit setNewPosition(posi);
+
+    if(checkIfScanningCompleted())
+    {
+        std::cout<<"Scaning completed"<<std::endl;
+        emit updateMouseState("SCANNING COMPLETED");
+    }
+}
+
+bool Mouse::checkIfScanningCompleted()
+{
+    if(boardMap->getVisitCounter() > boardSize*boardSize -1)
+        return true;
+    return false;
 }
 void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls)
 {

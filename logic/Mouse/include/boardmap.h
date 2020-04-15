@@ -14,6 +14,7 @@ public:
     void init(int size);
     bool checkIsCellVisited(int x, int y);
     void addCell(int x, int y, bool walls[4]);
+    int getVisitCounter();
 
 };
 

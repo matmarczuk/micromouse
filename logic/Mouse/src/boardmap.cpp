@@ -32,7 +32,6 @@ void Boardmap::init(int size)
             }
         }
     }
-
 }
 Boardmap::~Boardmap()
 {
@@ -53,7 +52,9 @@ void Boardmap::addCell(int x, int y, bool walls[4])
     map[x][y].isVisited = true;
     visit_counter++;
     std::cout<<visit_counter<<std::endl;
+}
 
-    if(visit_counter > boardSize*boardSize - 1)
-        std::cout<<"Scaning completed"<<std::endl;
+int Boardmap::getVisitCounter()
+{
+    return visit_counter;
 }

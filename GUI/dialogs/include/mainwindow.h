@@ -23,7 +23,7 @@ public:
     Ui::MainWindow* getUi();
 public slots:
     void drawBoard();
-    void updateState();
+    void updateMouseStateLabel(QString state);
 private slots:
     void on_actionExit_triggered();
 

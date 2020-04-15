@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
 {
     scene = new QGraphicsScene();
     ui->setupUi(this);
-    ui->state_label->setText("READY");
     ui->boardView->setScene(scene);
 
     connect(ui->startButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
@@ -45,4 +44,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
+}
+void MainWindow::updateMouseStateLabel(QString state)
+{
+    ui->state_label->setText(state);
 }
