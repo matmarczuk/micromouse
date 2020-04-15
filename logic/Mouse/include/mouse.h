@@ -33,6 +33,7 @@ signals:
 public slots:
     void readSensor(bool walls[3]);
     void init(int boardSize);
+    void reset();
 private:
     void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
     bool checkIfScanningCompleted();

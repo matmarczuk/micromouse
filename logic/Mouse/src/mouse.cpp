@@ -19,6 +19,10 @@ void Mouse::init(int boardSize)
     emit updateMouseState("READY");
     emit setNewPosition(position);
 }
+void Mouse::reset()
+{
+    init(this->boardSize);
+}
 void Mouse::readSensor(bool walls[3])
 {
     emit updateMouseState("SCANNING");
