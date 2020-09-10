@@ -1,5 +1,7 @@
 #include "logic/Mouse/include/mouse.h"
 #include "logic/Board/include/cell.h"
+#include "logic/Mouse/include/wavepropagation.h"
+#include "logic/Mouse/include/timetable.h"
 #include <iostream>
 
 Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap), phase(READY_FOR_SCANNING)
@@ -177,7 +179,19 @@ void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls
     }
 }
 
-void Mouse::solve_algorithm(algorithm_enum algorithm)
+void Mouse::solveBoard(algorithm_enum chosen_algorithm)
 {
+    if(solveAlgorithm)
+        delete solveAlgorithm;
 
+    switch(chosen_algorithm)
+    {
+        case WAVE_PROPAGATION:
+            solveAlgorithm = new WavePropagation();
+            break;
+        case TIME_TABLE:
+            solveAlgorithm = new TimeTable();
+            break;
+    }
+    path = solveAlgorithm->calculate(boardMap);
 }

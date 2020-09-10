@@ -58,3 +58,13 @@ int Boardmap::getVisitCounter()
 {
     return visit_counter;
 }
+
+Cell** Boardmap::getMap()
+{
+    return map;
+}
+
+int Boardmap::getBoardSize()
+{
+    return boardSize;
+}

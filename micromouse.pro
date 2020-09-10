@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++14
 
 SOURCES += \
+    logic/Mouse/src/timetable.cpp \
         main.cpp \
         GUI/dialogs/src/mainwindow.cpp \
         logic/Board/src/boardgenerator.cpp \
@@ -39,7 +40,7 @@ SOURCES += \
     GUI/dialogs/src/newboarddialog.cpp \
     logic/micromouse.cpp \
     logic/Board/src/fileboard.cpp \
-    logic/Mouse/src/wavepropagation.cpp
+    logic/Mouse/src/wavepropagation.cpp \
 
 HEADERS += \
         GUI/dialogs/include/mainwindow.h \
@@ -55,11 +56,11 @@ HEADERS += \
     GUI/objects/include/gsensor.h \
     GUI/dialogs/include/startdialog.h \
     GUI/dialogs/include/newboarddialog.h \
+    logic/Mouse/include/timetable.h \
     logic/micromouse.h \
     logic/Board/include/fileboard.h \
     logic/Mouse/include/algorithm.h \
-    logic/Mouse/include/wavepropagation.h
-
+    logic/Mouse/include/wavepropagation.h \
 
 FORMS += \
         GUI/forms/mainwindow.ui \

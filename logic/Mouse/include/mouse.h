@@ -25,6 +25,8 @@ private:
     Boardmap * boardMap;
     int boardSize;
     mouse_phase phase;
+    Algorithm * solveAlgorithm = NULL;
+    std::vector<Cell> path;
 
 public:
     Mouse(Sensor *sensor);
@@ -37,7 +39,7 @@ public slots:
     void readSensor(bool walls[3]);
     void init(int boardSize);
     void reset();
-    void solve_algorithm(algorithm_enum algorithm);
+    void solveBoard(algorithm_enum algorithm);
 private:
     void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
     bool checkIfScanningCompleted();

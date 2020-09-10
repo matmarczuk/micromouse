@@ -2,9 +2,9 @@
 #define WAVEPROPAGATION_H
 
 #include "algorithm.h"
-class WavePropagation : Algorithm
+class WavePropagation : public Algorithm
 {
 public :
-    void calculate(Boardmap *map);
+    std::vector<Cell> calculate(Boardmap *map);
 };
 #endif // WAVEPROPAGATION_H

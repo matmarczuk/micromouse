@@ -33,5 +33,5 @@ Micromouse::Micromouse():
     QObject::connect(mainWindow->getUi()->resetButton, SIGNAL(clicked(bool)), mouse, SLOT(reset()));
     QObject::connect(mainWindow->getUi()->resetButton, SIGNAL(clicked(bool)), sensor, SLOT(stopTimer()));
 
-    QObject::connect(mainWindow, SIGNAL(solve_with_algorithm(algorithm_enum)), mouse, SLOT());
+    QObject::connect(mainWindow, SIGNAL(solve_with_algorithm(algorithm_enum)), mouse, SLOT(solveBoard(algorithm_enum)));
 }
