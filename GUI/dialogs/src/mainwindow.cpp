@@ -48,12 +48,16 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::updateMouseStateLabel(QString state)
 {
     ui->state_label->setText(state);
+
+    if(state == QString("READY FOR SOLVE"))
+        ui->solve_button->setEnabled(true);
+    else if(state == QString("READY"))
+        ui->solve_button->setDisabled(true);
 }
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
-    qDebug("combo activated %s",arg1.toStdString().c_str());
-    ui->solve_button->setEnabled(true);
+    //ui->solve_button->setEnabled(true);
 }
 
 void MainWindow::on_solve_button_clicked()

@@ -88,7 +88,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>SOLVE</string>
+           <string>SOLVE AND RIDE</string>
           </property>
          </widget>
         </item>
@@ -152,12 +152,7 @@
           </item>
           <item>
            <property name="text">
-            <string>Other</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Other 2</string>
+            <string>Time table</string>
            </property>
           </item>
          </widget>
@@ -187,7 +182,7 @@
      <x>0</x>
      <y>0</y>
      <width>1173</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -207,8 +202,8 @@
      <rect>
       <x>683</x>
       <y>1215</y>
-      <width>200</width>
-      <height>125</height>
+      <width>169</width>
+      <height>120</height>
      </rect>
     </property>
     <property name="sizePolicy">

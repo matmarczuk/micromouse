@@ -8,6 +8,7 @@ Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap), phase(REA
 {
     QObject::connect(this->sensor1,&Sensor::newMeasure,this,&Mouse::readSensor);
     QObject::connect(this,&Mouse::setNewPosition,sensor1,&Sensor::updatePosition);
+    QObject::connect(&ride_timer, SIGNAL(timeout()), this, SLOT(ridePath()));
     init(0);
 }
 
@@ -127,8 +128,6 @@ void Mouse::readSensor(bool walls[3])
             }
             break;
         }
-
-
     }
 }
 
@@ -194,4 +193,36 @@ void Mouse::solveBoard(algorithm_enum chosen_algorithm)
             break;
     }
     path = solveAlgorithm->calculate(boardMap);
+    emit updateMouseState("BOARD SOLVED. READY TO RIDE");
+    ride_timer.start(100);
+}
+void Mouse::ridePath()
+{
+    if(!path.empty())
+    {
+        emit updateMouseState("RIDE");
+
+        Cell next_cell = path.back();
+        path.pop_back();
+        this->position.x = next_cell.pos_x*CELL_SIZE;
+        this->position.y = next_cell.pos_y*CELL_SIZE;
+
+        Cell next_neighbour_cell = path.back();
+        if(next_neighbour_cell.pos_x>next_cell.pos_x)
+            this->position.direction=2;
+        else if(next_neighbour_cell.pos_x<next_cell.pos_x)
+            this->position.direction=0;
+        else if(next_neighbour_cell.pos_y>next_cell.pos_y)
+            this->position.direction=3;
+        else if(next_neighbour_cell.pos_y<next_cell.pos_y)
+            this->position.direction=1;
+        emit setNewPosition(this->position);
+    }
+    else
+    {
+        emit updateMouseState("RIDE COMPLETED");
+        ride_timer.stop();
+    }
+
+
 }

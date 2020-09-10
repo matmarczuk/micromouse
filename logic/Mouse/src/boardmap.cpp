@@ -51,7 +51,6 @@ void Boardmap::addCell(int x, int y, bool walls[4])
         map[x][y].walls[i]=walls[i];
     map[x][y].isVisited = true;
     visit_counter++;
-    std::cout<<visit_counter<<std::endl;
 }
 
 int Boardmap::getVisitCounter()

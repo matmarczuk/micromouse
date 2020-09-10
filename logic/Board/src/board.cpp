@@ -1,5 +1,4 @@
 #include "logic/Board/include/board.h"
-#include <qdebug.h>
 Board::Board()
 {
     board = nullptr;
@@ -25,7 +24,6 @@ void Board::setNewBoard(Cell **board, int size)
         }
      //Free the array of pointers
          delete[] this->board;
-    qDebug("dealocagte");
     }
 
     this->board = board;
