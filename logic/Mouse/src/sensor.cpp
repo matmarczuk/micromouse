@@ -6,6 +6,10 @@ Sensor::Sensor(Cell*** _board):board(_board)
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(measure()));
     //timer.start(100);
 }
+
+/*!
+ * \brief Simulates sensor readings
+ */
 void Sensor::measure()
 {
     //find in which cell are you
@@ -41,19 +45,36 @@ void Sensor::measure()
         break;
     }
 }
+
+/*!
+ * \brief Update sensor position (according to mouse position and orientation)
+ * \param pos - new position
+ */
 void Sensor::updatePosition(Position pos)
 {
     position = pos;
 }
+
+/*!
+ * \brief Sets generated board for sensor use (readings)
+ * \param board - Cell table
+ */
 void Sensor::setBoard(Cell ***board)
 {
     this->board = board;
 }
+
+/*!
+ * \brief Stops simulation timer
+ */
 void Sensor::stopTimer()
 {
     timer.stop();
 }
 
+/*!
+ * \brief Start simulaton timer with hardcoded timestamp
+ */
 void Sensor::startTimer()
 {
     timer.start(100);

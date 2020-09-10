@@ -21,11 +21,21 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
 
 
 }
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+    delete scene;
+}
+
 Ui::MainWindow* MainWindow::getUi()
 {
     return ui;
 }
 
+/*!
+ * \brief Draw board and mouse graphic
+ */
 void MainWindow::drawBoard()
 {
     scene->clear();
@@ -35,16 +45,18 @@ void MainWindow::drawBoard()
     this->show();
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-    delete scene;
-}
-
+/*!
+ * \brief Close button callback
+ */
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
 }
+
+/*!
+ * \brief Updates mouse state label displayed on main screen
+ * \param state - new state
+ */
 void MainWindow::updateMouseStateLabel(QString state)
 {
     ui->state_label->setText(state);
@@ -55,11 +67,19 @@ void MainWindow::updateMouseStateLabel(QString state)
         ui->solve_button->setDisabled(true);
 }
 
+/*!
+ * \brief MainWindow::on_comboBox_activated
+ * \param arg1
+ */
+
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
     //ui->solve_button->setEnabled(true);
 }
 
+/*!
+ * \brief Emit solve board requsest with selected algorithm
+ */
 void MainWindow::on_solve_button_clicked()
 {
     switch(ui->comboBox->currentIndex())

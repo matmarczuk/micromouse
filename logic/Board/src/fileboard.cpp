@@ -11,6 +11,10 @@ FileBoard::FileBoard(QWidget *parent) : QWidget(parent)
 
 }
 
+/*!
+ * \brief Loads JSON board from file choosen by user
+ * in file dialog
+ */
 void FileBoard::loadBoardFromFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
@@ -21,7 +25,6 @@ void FileBoard::loadBoardFromFile()
           return;
     else
     {
-
         QFile file(fileName);
 
         if (!file.open(QIODevice::ReadOnly)) {
@@ -59,14 +62,15 @@ void FileBoard::loadBoardFromFile()
                 cellBoard[pos_x][pos_y].walls[w] = walls[w].toBool();
             }
         }
-
         emit setNewBoard(cellBoard, size);
-
-
     }
-
-
 }
+
+/*!
+ * \brief Save generated board to JSON file
+ * \param board - generated board
+ * \param size - size of the board
+ */
 void FileBoard::saveBoardToFile(Cell** board, int size)
 {
     QString fileName = QFileDialog::getSaveFileName(this,

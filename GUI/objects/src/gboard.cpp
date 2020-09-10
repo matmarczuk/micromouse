@@ -7,23 +7,38 @@ GBoard::GBoard()
 
 }
 
-void GBoard::setBoard(Board *board)
-{
-    this->board = board;
-}
 GBoard::GBoard(Board * _board) : board(_board)
 {
 
 }
+
+/*!
+ * \brief Connect logical board with GUI
+ * \param board - logic board
+ */
+void GBoard::setBoard(Board *board)
+{
+    this->board = board;
+}
+
+/*!
+ * \brief Return logic board
+ * \return logic board
+ */
 Board* GBoard::getBoard()
 {
     return board;
 }
+
+/*!
+ * \brief Create graphical representation of board
+ * \param scene
+ */
 void GBoard::drawBoard(QGraphicsScene& scene)
 {
     Cell*** tmp_board = board->getBoard();
     int size = board->getSize();
-    int high = 30;
+    int high = CELL_SIZE;
     for(int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -56,7 +71,4 @@ void GBoard::drawBoard(QGraphicsScene& scene)
             }
         }
     }
-
-
-    //scene.addItem();
 }

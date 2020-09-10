@@ -2,6 +2,7 @@
 #define WAVEPROPAGATION_H
 
 #include "algorithm.h"
+
 class WavePropagation : public Algorithm
 {
 public :

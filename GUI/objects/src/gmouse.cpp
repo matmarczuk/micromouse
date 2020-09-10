@@ -9,6 +9,15 @@ GMouse::GMouse(Mouse *mouse)
     QObject::connect(mouse, SIGNAL(setNewPosition(Position)), this, SLOT(setPos(Position)));
 }
 
+GMouse::~GMouse()
+{
+    delete item;
+}
+
+/*!
+ * \brief Set mouse graphic
+ * \param scene
+ */
 void GMouse::draw(QGraphicsScene& scene)
 {
     item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
@@ -17,6 +26,10 @@ void GMouse::draw(QGraphicsScene& scene)
     scene.addItem(this->item);
 }
 
+/*!
+ * \brief Set new position of mouse
+ * \param pos
+ */
 void GMouse::setPos(Position pos)
 {
     item->setPos(pos.x,pos.y);
@@ -37,8 +50,4 @@ void GMouse::setPos(Position pos)
         default:
             break;
     }
-}
-GMouse::~GMouse()
-{
-    delete item;
 }

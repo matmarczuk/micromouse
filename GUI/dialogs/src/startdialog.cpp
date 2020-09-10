@@ -13,17 +13,26 @@ StartDialog::~StartDialog()
     delete ui;
 }
 
+/*!
+ * \brief Quit application button callback
+ */
 void StartDialog::on_pushButton_clicked()
 {
     QApplication::quit();
 }
 
+/*!
+ * \brief New board button callback
+ */
 void StartDialog::on_newBoardButton_clicked()
 {
     this->close();
     emit showNewBoardDialog();
 }
 
+/*!
+ * \brief Load board button callback
+ */
 void StartDialog::on_loadBoardButton_clicked()
 {
     this->close();
