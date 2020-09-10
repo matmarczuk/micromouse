@@ -2,6 +2,12 @@
 #define ALGORITHM_H
 #include "boardmap.h"
 
+enum algorithm_enum
+{
+    WAVE_PROPAGATION,
+    OTHER
+};
+
 class Algorithm
 {
 public:

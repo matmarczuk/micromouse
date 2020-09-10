@@ -38,7 +38,8 @@ SOURCES += \
     GUI/dialogs/src/startdialog.cpp \
     GUI/dialogs/src/newboarddialog.cpp \
     logic/micromouse.cpp \
-    logic/Board/src/fileboard.cpp
+    logic/Board/src/fileboard.cpp \
+    logic/Mouse/src/wavepropagation.cpp
 
 HEADERS += \
         GUI/dialogs/include/mainwindow.h \
@@ -55,7 +56,10 @@ HEADERS += \
     GUI/dialogs/include/startdialog.h \
     GUI/dialogs/include/newboarddialog.h \
     logic/micromouse.h \
-    logic/Board/include/fileboard.h
+    logic/Board/include/fileboard.h \
+    logic/Mouse/include/algorithm.h \
+    logic/Mouse/include/wavepropagation.h
+
 
 FORMS += \
         GUI/forms/mainwindow.ui \

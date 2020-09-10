@@ -176,3 +176,8 @@ void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls
         break;
     }
 }
+
+void Mouse::solve_algorithm(algorithm_enum algorithm)
+{
+
+}

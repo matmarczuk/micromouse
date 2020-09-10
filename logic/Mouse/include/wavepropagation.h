@@ -6,5 +6,5 @@ class WavePropagation : Algorithm
 {
 public :
     void calculate(Boardmap *map);
-}
+};
 #endif // WAVEPROPAGATION_H

@@ -49,3 +49,22 @@ void MainWindow::updateMouseStateLabel(QString state)
 {
     ui->state_label->setText(state);
 }
+
+void MainWindow::on_comboBox_activated(const QString &arg1)
+{
+    qDebug("combo activated %s",arg1.toStdString().c_str());
+    ui->solve_button->setEnabled(true);
+}
+
+void MainWindow::on_solve_button_clicked()
+{
+    switch(ui->comboBox->currentIndex())
+    {
+        case 0:
+            emit solve_with_algorithm(WAVE_PROPAGATION);
+            break;
+        case 1:
+            emit solve_with_algorithm(OTHER);
+            break;
+    }
+}

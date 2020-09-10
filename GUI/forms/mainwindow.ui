@@ -150,6 +150,16 @@
             <string>Wave propagation</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>Other</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Other 2</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>

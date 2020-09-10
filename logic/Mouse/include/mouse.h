@@ -5,6 +5,7 @@
 #include "sensor.h"
 #include "position.h"
 #include "boardmap.h"
+#include "algorithm.h"
 
 enum mouse_phase
 {
@@ -36,6 +37,7 @@ public slots:
     void readSensor(bool walls[3]);
     void init(int boardSize);
     void reset();
+    void solve_algorithm(algorithm_enum algorithm);
 private:
     void convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls);
     bool checkIfScanningCompleted();
