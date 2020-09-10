@@ -1,8 +1,8 @@
 #include "logic/Board/include/board.h"
-
 Board::Board()
 {
     board = nullptr;
+    size = 0;
 }
 Cell*** Board::getBoard()
 {
@@ -16,9 +16,20 @@ int Board::getSize()
 
 void Board::setNewBoard(Cell **board, int size)
 {
+    //dealocate previous
+    if(size != 0)
+    {
+        for(int i = 0; i < this->size; ++i) {
+            delete[] this->board[i];
+        }
+     //Free the array of pointers
+         delete[] this->board;
+    }
+
     this->board = board;
     this->size = size;
-    emit updateBoard();
+    emit initBoard();
+    emit initMouse(size);
 }
 
 void Board::saveBoardRequest()

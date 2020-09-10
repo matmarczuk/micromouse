@@ -15,12 +15,12 @@ public:
     Cell*** getBoard();
     int getSize();
 signals:
-    void updateBoard();
+    void initBoard();
+    void initMouse(int);
     void sendBoardToSave(Cell **board, int size);
 public slots:
     void setNewBoard(Cell **board, int size);
     void saveBoardRequest();
-
 };
 
 #endif // BOARD_H

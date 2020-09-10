@@ -6,6 +6,8 @@ NewBoardDialog::NewBoardDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     sliderPosition=ui->boardSizeSlider->minimum();
+    ui->lcdNumber->display(this->ui->boardSizeSlider->sliderPosition());
+    ui->lcdNumber_2->display(this->ui->boardSizeSlider->sliderPosition());
 }
 
 NewBoardDialog::~NewBoardDialog()
@@ -21,4 +23,10 @@ void NewBoardDialog::on_generateBoardButton_clicked()
 void NewBoardDialog::showNewBoardDialog()
 {
     this->show();
+}
+
+void NewBoardDialog::on_boardSizeSlider_sliderMoved(int position)
+{
+    ui->lcdNumber->display(position);
+    ui->lcdNumber_2->display(position);
 }

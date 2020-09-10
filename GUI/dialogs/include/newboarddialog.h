@@ -18,6 +18,8 @@ public:
 
 private slots:
     void on_generateBoardButton_clicked();
+    void on_boardSizeSlider_sliderMoved(int position);
+
 public slots:
     void showNewBoardDialog();
 signals:

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1057</width>
+    <width>1173</width>
     <height>569</height>
    </rect>
   </property>
@@ -14,23 +14,165 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QGraphicsView" name="boardView"/>
     </item>
     <item>
-     <widget class="QPushButton" name="startButton">
-      <property name="text">
-       <string>START</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="stopButton">
-      <property name="text">
-       <string>STOP</string>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>15</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Current state:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="state_label">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="text">
+           <string>X</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="9" column="0" colspan="2">
+         <widget class="QPushButton" name="solve_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>SOLVE AND RIDE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="2">
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="resetButton">
+          <property name="text">
+           <string>RESET</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="stopButton">
+          <property name="text">
+           <string>STOP</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0" colspan="2">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Algorithm</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QPushButton" name="startButton">
+          <property name="text">
+           <string>START</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0" colspan="2">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="8" column="0" colspan="2">
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>Wave propagation</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Time table</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -39,8 +181,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1057</width>
-     <height>22</height>
+     <width>1173</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -58,10 +200,10 @@
    <widget class="QMenu" name="menuFile">
     <property name="geometry">
      <rect>
-      <x>205</x>
-      <y>108</y>
-      <width>200</width>
-      <height>100</height>
+      <x>683</x>
+      <y>1215</y>
+      <width>169</width>
+      <height>120</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -77,15 +219,24 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="title">
-     <string>Game</string>
+     <string>Board</string>
     </property>
     <addaction name="actionSave_board"/>
+    <addaction name="actionLoad_board"/>
+    <addaction name="actionGenerate_new_board"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuMenu"/>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -95,6 +246,21 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionLoad_board">
+   <property name="text">
+    <string>Load board</string>
+   </property>
+  </action>
+  <action name="actionGenerate_new_board">
+   <property name="text">
+    <string>Generate new board</string>
    </property>
   </action>
  </widget>

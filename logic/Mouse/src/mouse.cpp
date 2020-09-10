@@ -1,15 +1,31 @@
 #include "logic/Mouse/include/mouse.h"
 #include "logic/Board/include/cell.h"
+#include "logic/Mouse/include/wavepropagation.h"
+#include "logic/Mouse/include/timetable.h"
+#include <iostream>
 
-Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap)
+Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap), phase(READY_FOR_SCANNING)
 {
     QObject::connect(this->sensor1,&Sensor::newMeasure,this,&Mouse::readSensor);
     QObject::connect(this,&Mouse::setNewPosition,sensor1,&Sensor::updatePosition);
+    QObject::connect(&ride_timer, SIGNAL(timeout()), this, SLOT(ridePath()));
+    init(0);
+}
+
+void Mouse::init(int boardSize)
+{
     position.x = 0;
     position.y = 0;
     position.direction = 1;
+    boardMap->init(boardSize);
+    this->boardSize = boardSize;
+    this->phase = READY_FOR_SCANNING;
+    emit updateMouseState("READY");
     emit setNewPosition(position);
-
+}
+void Mouse::reset()
+{
+    init(this->boardSize);
 }
 void Mouse::readSensor(bool walls[3])
 {
@@ -21,8 +37,6 @@ void Mouse::readSensor(bool walls[3])
         convertWallCoordinates(walls,board_wall);
         boardMap->addCell(x_cell,y_cell, board_wall);
     }
-
-
 
     Position posi;
     if(!walls[2]) //turn right
@@ -83,10 +97,54 @@ void Mouse::readSensor(bool walls[3])
         posi.y = this->position.y;
         posi.direction = this->position.direction;
 
-
-
-
     emit setNewPosition(posi);
+
+
+
+    switch(phase)
+    {
+        case READY_FOR_SCANNING:
+        {
+            phase = SCANNING;
+            emit updateMouseState("SCANNING");
+            break;
+        }
+        case SCANNING:
+        {
+            if(checkIfScanningCompleted())
+            {
+                phase = GOING_BACK;
+                emit updateMouseState("SCANNING COMPLETED");
+             }
+            break;
+        }
+        case GOING_BACK:
+        {
+            if(checkIfMouseOnStart())
+            {
+                phase = READY_FOR_SOLVE;
+                emit updateMouseState("READY FOR SOLVE");
+                emit stopSimulation();
+            }
+            break;
+        }
+    }
+}
+
+bool Mouse::checkIfScanningCompleted()
+{
+    if(boardMap->getVisitCounter() > boardSize*boardSize -1)
+        return true;
+    return false;
+}
+bool Mouse::checkIfMouseOnStart()
+{
+    int x_cell = this->position.x/CELL_SIZE;
+    int y_cell = this->position.y/CELL_SIZE;
+
+    if(!x_cell && !y_cell)
+        return true;
+    return false;
 }
 void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls)
 {
@@ -118,4 +176,53 @@ void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls
     default:
         break;
     }
+}
+
+void Mouse::solveBoard(algorithm_enum chosen_algorithm)
+{
+    if(solveAlgorithm)
+        delete solveAlgorithm;
+
+    switch(chosen_algorithm)
+    {
+        case WAVE_PROPAGATION:
+            solveAlgorithm = new WavePropagation();
+            break;
+        case TIME_TABLE:
+            solveAlgorithm = new TimeTable();
+            break;
+    }
+    path = solveAlgorithm->calculate(boardMap);
+    emit updateMouseState("BOARD SOLVED. READY TO RIDE");
+    ride_timer.start(100);
+}
+void Mouse::ridePath()
+{
+    if(!path.empty())
+    {
+        emit updateMouseState("RIDE");
+
+        Cell next_cell = path.back();
+        path.pop_back();
+        this->position.x = next_cell.pos_x*CELL_SIZE;
+        this->position.y = next_cell.pos_y*CELL_SIZE;
+
+        Cell next_neighbour_cell = path.back();
+        if(next_neighbour_cell.pos_x>next_cell.pos_x)
+            this->position.direction=2;
+        else if(next_neighbour_cell.pos_x<next_cell.pos_x)
+            this->position.direction=0;
+        else if(next_neighbour_cell.pos_y>next_cell.pos_y)
+            this->position.direction=3;
+        else if(next_neighbour_cell.pos_y<next_cell.pos_y)
+            this->position.direction=1;
+        emit setNewPosition(this->position);
+    }
+    else
+    {
+        emit updateMouseState("RIDE COMPLETED");
+        ride_timer.stop();
+    }
+
+
 }
