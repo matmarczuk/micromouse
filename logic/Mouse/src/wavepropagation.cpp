@@ -6,6 +6,14 @@ struct index
     int x;
     int y;
 };
+
+/*!
+ * \brief Virtual function implementation. Based on recorded map it uses water flow rule
+ * to find shortest way to maze center
+ *
+ * \param map - recorded by mouse
+ * \return vector of final path cells
+ */
 std::vector<Cell> WavePropagation::calculate(Boardmap *map)
 {
     Cell** solve_map = map->getMap();

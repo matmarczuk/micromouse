@@ -12,6 +12,10 @@ Mouse::Mouse(Sensor *sensor): sensor1(sensor), boardMap(new Boardmap), phase(REA
     init(0);
 }
 
+/*!
+ * \brief Initialize new mouse object
+ * \param boardSize - generated board size
+ */
 void Mouse::init(int boardSize)
 {
     position.x = 0;
@@ -23,10 +27,19 @@ void Mouse::init(int boardSize)
     emit updateMouseState("READY");
     emit setNewPosition(position);
 }
+
+/*!
+ * \brief Reset recorded board and position
+ */
 void Mouse::reset()
 {
     init(this->boardSize);
 }
+
+/*!
+ * \brief Interpret sensor read
+ * \param walls - binary sensor readings (left, front, right)
+ */
 void Mouse::readSensor(bool walls[3])
 {
     bool board_wall[4];
@@ -99,8 +112,6 @@ void Mouse::readSensor(bool walls[3])
 
     emit setNewPosition(posi);
 
-
-
     switch(phase)
     {
         case READY_FOR_SCANNING:
@@ -131,12 +142,21 @@ void Mouse::readSensor(bool walls[3])
     }
 }
 
+/*!
+ * \brief Check if scanning of board is completed
+ * \return boolean
+ */
 bool Mouse::checkIfScanningCompleted()
 {
     if(boardMap->getVisitCounter() > boardSize*boardSize -1)
         return true;
     return false;
 }
+
+/*!
+ * \brief Check if mouse came back to start position
+ * \return boolean
+ */
 bool Mouse::checkIfMouseOnStart()
 {
     int x_cell = this->position.x/CELL_SIZE;
@@ -146,6 +166,12 @@ bool Mouse::checkIfMouseOnStart()
         return true;
     return false;
 }
+
+/*!
+ * \brief Converts sensor readings to global coordinates
+ * \param robot_sensor_walls - readings in mouse coordinates
+ * \param board_walls - table of cell walls
+ */
 void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls)
 {
     switch (this->position.direction) {
@@ -178,6 +204,10 @@ void Mouse::convertWallCoordinates(bool robot_sensor_walls[3], bool *board_walls
     }
 }
 
+/*!
+ * \brief Solve maze within choosen algorithm
+ * \param chosen_algorithm
+ */
 void Mouse::solveBoard(algorithm_enum chosen_algorithm)
 {
     if(solveAlgorithm)
@@ -196,6 +226,10 @@ void Mouse::solveBoard(algorithm_enum chosen_algorithm)
     emit updateMouseState("BOARD SOLVED. READY TO RIDE");
     ride_timer.start(100);
 }
+
+/*!
+ * \brief Move mouse within calculated path
+ */
 void Mouse::ridePath()
 {
     if(!path.empty())
@@ -223,6 +257,4 @@ void Mouse::ridePath()
         emit updateMouseState("RIDE COMPLETED");
         ride_timer.stop();
     }
-
-
 }
