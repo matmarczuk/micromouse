@@ -10,5 +10,7 @@ class TimeTable : public Algorithm
 {
 public :
     std::vector<Cell> calculate(Boardmap *map);
+private:
+    int calculateCost(int current_orient, int direction);
 };
 #endif // TIMETABLE_H
