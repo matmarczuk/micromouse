@@ -28,8 +28,6 @@ public slots:
 private slots:
     void on_actionExit_triggered();
 
-    void on_comboBox_activated(const QString &arg1);
-
     void on_solve_button_clicked();
 signals:
     void solve_with_algorithm(algorithm_enum algorithm);

@@ -37,7 +37,7 @@ void Mouse::reset()
 }
 
 /*!
- * \brief Interpret sensor read
+ * \brief Interpret sensor read during scan
  * \param walls - binary sensor readings (left, front, right)
  */
 void Mouse::readSensor(bool walls[3])
@@ -133,7 +133,6 @@ void Mouse::readSensor(bool walls[3])
         {
             if(checkIfMouseOnStart())
             {
-                phase = READY_FOR_SOLVE;
                 emit updateMouseState("READY FOR SOLVE");
                 emit stopSimulation();
             }

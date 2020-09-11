@@ -62,18 +62,17 @@ void MainWindow::updateMouseStateLabel(QString state)
     ui->state_label->setText(state);
 
     if(state == QString("READY FOR SOLVE"))
+    {
+        ui->startButton->setDisabled(true);
+        ui->stopButton->setDisabled(true);
         ui->solve_button->setEnabled(true);
+    }
     else if(state == QString("READY"))
+    {
         ui->solve_button->setDisabled(true);
-}
-
-/*!
- * \brief MainWindow::on_comboBox_activated
- * \param arg1
- */
-void MainWindow::on_comboBox_activated(const QString &arg1)
-{
-    //ui->solve_button->setEnabled(true);
+        ui->startButton->setEnabled(true);
+        ui->stopButton->setEnabled(true);
+    }
 }
 
 /*!

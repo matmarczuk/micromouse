@@ -14,10 +14,7 @@ enum mouse_phase
 {
     READY_FOR_SCANNING,
     SCANNING,
-    GOING_BACK,
-    READY_FOR_SOLVE,
-    RIDE,
-    REACHED_FINISH
+    GOING_BACK
 };
 
 /*!
