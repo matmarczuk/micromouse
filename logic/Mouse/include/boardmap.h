@@ -3,6 +3,9 @@
 #include "logic/Board/include/cell.h"
 #include "position.h"
 
+/*!
+ * \brief The Boardmap class is representation of board seen by mouse
+ */
 class Boardmap
 {
     Cell** map;

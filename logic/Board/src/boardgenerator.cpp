@@ -8,6 +8,11 @@ BoardGenerator::BoardGenerator()
 {
 
 }
+
+/*!
+ * \brief Generates now board. Allocates memory for it
+ * \param size - size choosen by user
+ */
 void BoardGenerator::generateNewBoard(int size)
 {
     srand( time( NULL ) );

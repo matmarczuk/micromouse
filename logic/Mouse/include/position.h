@@ -1,6 +1,9 @@
 #ifndef POSITION_H
 #define POSITION_H
 
+/*!
+ * \brief The Position struct contains coordinates of mouse
+ */
 struct Position
 {
   int x;

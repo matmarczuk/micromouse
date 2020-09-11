@@ -5,6 +5,9 @@
 #include "position.h"
 #include "logic/Board/include/board.h"
 
+/*!
+ * \brief The Sensor class responsible for providing sensor reads to mouse
+ */
 class Sensor : public QObject
 {
     Q_OBJECT

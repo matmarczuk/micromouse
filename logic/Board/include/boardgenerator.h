@@ -3,6 +3,10 @@
 #include "cell.h"
 #include <QObject>
 
+/*!
+ * \brief The BoardGenerator class resposible for generating
+ * and passing new board to Board class
+ */
 class BoardGenerator : public QObject
 {
     Q_OBJECT

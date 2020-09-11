@@ -3,6 +3,9 @@
 #include "logic/Board/include/board.h"
 #include <QGraphicsScene>
 
+/*!
+ * \brief The GBoard class is graphic representation of board
+ */
 class GBoard
 {
     Board * board;

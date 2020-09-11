@@ -1,6 +1,17 @@
 # Micromouse simulator
 App was created within one of student curse subject
 
+# Build instruction 
+`mkdir build`
+
+`cd build`
+
+`qmake ../<reference to .pro file>`
+
+`make`
+
+`./micromouse`
+
 # Usage 
 Once user launches an app it will see opening screen. It will allow to generate new map or load it from json file. 
 

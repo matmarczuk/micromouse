@@ -15,17 +15,27 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
     ui->setupUi(this);
     ui->boardView->setScene(scene);
 
-    connect(ui->startButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
+    connect(ui->scanButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
     connect(ui->stopButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(stopTimer()));
     connect(ui->actionSave_board, SIGNAL(triggered(bool)),gboard->getBoard(), SLOT(saveBoardRequest()));
 
 
 }
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+    delete scene;
+}
+
 Ui::MainWindow* MainWindow::getUi()
 {
     return ui;
 }
 
+/*!
+ * \brief Draw board and mouse graphic
+ */
 void MainWindow::drawBoard()
 {
     scene->clear();
@@ -35,31 +45,39 @@ void MainWindow::drawBoard()
     this->show();
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-    delete scene;
-}
-
+/*!
+ * \brief Close button callback
+ */
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
 }
+
+/*!
+ * \brief Updates mouse state label displayed on main screen
+ * \param state - new state
+ */
 void MainWindow::updateMouseStateLabel(QString state)
 {
     ui->state_label->setText(state);
 
     if(state == QString("READY FOR SOLVE"))
+    {
+        ui->scanButton->setDisabled(true);
+        ui->stopButton->setDisabled(true);
         ui->solve_button->setEnabled(true);
+    }
     else if(state == QString("READY"))
+    {
         ui->solve_button->setDisabled(true);
+        ui->scanButton->setEnabled(true);
+        ui->stopButton->setEnabled(true);
+    }
 }
 
-void MainWindow::on_comboBox_activated(const QString &arg1)
-{
-    //ui->solve_button->setEnabled(true);
-}
-
+/*!
+ * \brief Emit solve board requsest with selected algorithm
+ */
 void MainWindow::on_solve_button_clicked()
 {
     switch(ui->comboBox->currentIndex())
@@ -68,7 +86,7 @@ void MainWindow::on_solve_button_clicked()
             emit solve_with_algorithm(WAVE_PROPAGATION);
             break;
         case 1:
-            emit solve_with_algorithm(OTHER);
+            emit solve_with_algorithm(TIME_TABLE);
             break;
     }
 }

@@ -4,6 +4,9 @@
 #include "boardgenerator.h"
 #include "cell.h"
 
+/*!
+ * \brief Class responsible for storing board data
+ */
 class Board : public QObject
 {
     Q_OBJECT
