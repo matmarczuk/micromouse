@@ -81,23 +81,39 @@ std::vector<Cell> WavePropagation::calculate(Boardmap *map)
     {
         if(tmp_board[i-1][j] == tmp_board[i][j]-1 && i-1>=0)
         {
-            path.push_back(solve_map[i-1][j]);
-            i=i-1;
+            if(!solve_map[i][j].walls[0])
+            {
+                path.push_back(solve_map[i-1][j]);
+                i=i-1;
+                continue;
+            }
         }
-        else if ( tmp_board[i][j-1] == tmp_board[i][j]-1 && j-1>=0)
+        if (tmp_board[i][j-1] == tmp_board[i][j]-1 && j-1>=0)
         {
-            path.push_back(solve_map[i][j-1]);
-            j=j-1;
+            if(!solve_map[i][j].walls[1])
+            {
+                path.push_back(solve_map[i][j-1]);
+                j=j-1;
+                continue;
+            }
         }
-        else if (tmp_board[i+1][j] == tmp_board[i][j]-1 && i+1<board_size)
+        if (tmp_board[i+1][j] == tmp_board[i][j]-1 && i+1<board_size)
         {
-            path.push_back(solve_map[i+1][j]);
-            i=i+1;
+            if(!solve_map[i][j].walls[2])
+            {
+                path.push_back(solve_map[i+1][j]);
+                i=i+1;
+                continue;
+            }
         }
-        else if ( tmp_board[i][j+1] == tmp_board[i][j]-1 && j+1<board_size)
+        if ( tmp_board[i][j+1] == tmp_board[i][j]-1 && j+1<board_size)
         {
-            path.push_back(solve_map[i][j+1]);
-            j=j+1;
+            if(!solve_map[i][j].walls[3])
+            {
+                path.push_back(solve_map[i][j+1]);
+                j=j+1;
+                continue;
+            }
         }
     }
     return path;
