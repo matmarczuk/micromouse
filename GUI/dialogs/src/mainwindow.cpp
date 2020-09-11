@@ -71,7 +71,6 @@ void MainWindow::updateMouseStateLabel(QString state)
  * \brief MainWindow::on_comboBox_activated
  * \param arg1
  */
-
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
     //ui->solve_button->setEnabled(true);

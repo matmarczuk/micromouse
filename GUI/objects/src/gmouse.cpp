@@ -14,6 +14,7 @@ GMouse::~GMouse()
     delete item;
 }
 
+
 /*!
  * \brief Set mouse graphic
  * \param scene
