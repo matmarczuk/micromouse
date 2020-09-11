@@ -5,6 +5,9 @@
 #include <QWidget>
 #include "logic/Board/include/cell.h"
 
+/*!
+ * \brief The FileBoard class is resposnsible for saving and loading from file
+ */
 class FileBoard : public QWidget
 {
     Q_OBJECT

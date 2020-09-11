@@ -3,6 +3,9 @@
 
 #include "algorithm.h"
 
+/*!
+ * \brief The WavePropagation class implements wave propagation solve algorithm
+ */
 class WavePropagation : public Algorithm
 {
 public :

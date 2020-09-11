@@ -87,7 +87,7 @@ void MainWindow::on_solve_button_clicked()
             emit solve_with_algorithm(WAVE_PROPAGATION);
             break;
         case 1:
-            emit solve_with_algorithm(OTHER);
+            emit solve_with_algorithm(TIME_TABLE);
             break;
     }
 }

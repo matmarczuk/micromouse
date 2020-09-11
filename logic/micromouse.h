@@ -10,6 +10,10 @@
 #include "GUI/objects/include/gsensor.h"
 #include "GUI/objects/include/gmouse.h"
 
+/*!
+ * \brief The Micromouse is main class of application
+ * it binds with Qt signals logic of the app
+ */
 class Micromouse
 {
     StartDialog startDialog;

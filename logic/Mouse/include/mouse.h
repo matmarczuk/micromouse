@@ -7,6 +7,9 @@
 #include "boardmap.h"
 #include "algorithm.h"
 
+/*!
+ * \brief The mouse_phase enum store possible mouse states
+ */
 enum mouse_phase
 {
     READY_FOR_SCANNING,
@@ -16,6 +19,10 @@ enum mouse_phase
     RIDE,
     REACHED_FINISH
 };
+
+/*!
+ * \brief The Mouse class is resposible for logic of mouse
+ */
 class Mouse : public QObject
 {
     Q_OBJECT

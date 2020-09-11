@@ -1,6 +1,9 @@
 #ifndef CELL_H
 #define CELL_H
 
+/*!
+ * \brief The Cell struct contain all attributes needed for calculations
+ */
 struct Cell
 {
     int pos_x;

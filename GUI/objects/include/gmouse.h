@@ -5,6 +5,9 @@
 #include <QObject>
 #include <QGraphicsItem>
 
+/*!
+ * \brief The GMouse class is graphic representation of mouse
+ */
 class GMouse : public QObject
 {
     Q_OBJECT
