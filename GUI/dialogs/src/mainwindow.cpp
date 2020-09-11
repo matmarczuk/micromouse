@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent, GBoard * gboard, GMouse * gmouse, GSenso
     ui->setupUi(this);
     ui->boardView->setScene(scene);
 
-    connect(ui->startButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
+    connect(ui->scanButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(startTimer()));
     connect(ui->stopButton, SIGNAL(clicked()), gsensor->getSensorInst(), SLOT(stopTimer()));
     connect(ui->actionSave_board, SIGNAL(triggered(bool)),gboard->getBoard(), SLOT(saveBoardRequest()));
 
@@ -63,14 +63,14 @@ void MainWindow::updateMouseStateLabel(QString state)
 
     if(state == QString("READY FOR SOLVE"))
     {
-        ui->startButton->setDisabled(true);
+        ui->scanButton->setDisabled(true);
         ui->stopButton->setDisabled(true);
         ui->solve_button->setEnabled(true);
     }
     else if(state == QString("READY"))
     {
         ui->solve_button->setDisabled(true);
-        ui->startButton->setEnabled(true);
+        ui->scanButton->setEnabled(true);
         ui->stopButton->setEnabled(true);
     }
 }

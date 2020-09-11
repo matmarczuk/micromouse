@@ -41,3 +41,8 @@ void NewBoardDialog::on_boardSizeSlider_sliderMoved(int position)
     ui->lcdNumber->display(position);
     ui->lcdNumber_2->display(position);
 }
+
+void NewBoardDialog::on_boardSizeSlider_valueChanged(int value)
+{
+    on_boardSizeSlider_sliderMoved(value);
+}
